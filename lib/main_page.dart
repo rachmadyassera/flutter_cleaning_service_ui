@@ -19,10 +19,10 @@ class _MainPageState extends State<MainPage> {
     setState(() {});
   }
 
-  // void onChangeFrequency(String type) {
-  //   selectedFrequency = frequency;
-  //   setState(() {});
-  // }
+  void onChangeFrequency(String frequency) {
+    selectedFrequency = frequency;
+    setState(() {});
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -108,6 +108,102 @@ class _MainPageState extends State<MainPage> {
                     ],
                   ),
                 ),
+                InkWell(
+                  onTap: () {
+                    onChangePaketType("mengkilap");
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 140,
+                        width: MediaQuery.of(context).size.width * 0.43,
+                        decoration: BoxDecoration(
+                          color: deepPurple50,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/image/img2.png'),
+                          ),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        'Paket Mengkilap',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: deepPurple50,
+                        ),
+                        child: selectedType == "mengkilap"
+                            ? Icon(
+                                Icons.check_circle,
+                                color: pink400,
+                                size: 30,
+                              )
+                            : Container(),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              "Pilih Langganan",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    onChangeFrequency("weekly");
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 110,
+                    decoration: selectedFrequency == "weekly"
+                        ? BoxDecoration(
+                            color: pink400,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          )
+                        : BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black.withOpacity(0.3),
+                            ),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                          ),
+                    child: Center(
+                      child: Text(
+                        'Mingguan',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: selectedFrequency == "weekly"
+                                ? Colors.white
+                                : Colors.black),
+                      ),
+                    ),
+                  ),
+                )
               ],
             )
           ],
